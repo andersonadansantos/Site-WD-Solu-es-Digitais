@@ -1,0 +1,23 @@
+{
+    "name": "WD Soluções Digitais",
+    "short_name": "WD Digital",
+    "description": "Agência de Marketing Digital em Belém - Automação, Gestão e Tecnologia",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#E31837",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "pt-BR",
+    "categories": ["business", "marketing"],
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [],
+    "prefer_related_applications": false
+}
