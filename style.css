@@ -381,6 +381,111 @@ nav a:hover::after { width: 100%; }
     50% { transform: translateY(-15px); }
 }
 
+/* ====== CARD SWAP (HERO) ====== */
+.card-swap-container {
+    position: relative;
+    width: 520px;
+    height: 420px;
+    perspective: 900px;
+    overflow: visible;
+    margin: 0 auto;
+    animation: svg-float 6s ease-in-out infinite;
+}
+
+.card-swap-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 340px;
+    min-height: 215px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    background: #000;
+    transform-style: preserve-3d;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 1.6rem 1.8rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.card-ico {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: rgba(227, 24, 55, 0.16);
+    color: var(--red-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.card-tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 0.3rem 0.7rem;
+    border-radius: 50px;
+}
+
+.card-swap-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0 0 0.5rem;
+    line-height: 1.25;
+}
+
+.card-swap-card p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.card-stat {
+    margin-top: auto;
+    padding-top: 1.3rem;
+}
+
+.card-stat-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.card-stat-bar span {
+    display: block;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--red), var(--red-light));
+}
+
+.card-stat-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    color: var(--gray);
+}
+
 .float-notification {
     animation: notif-pulse 4s ease-in-out infinite;
 }
@@ -524,7 +629,11 @@ section { padding: 6rem 2rem; }
 }
 
 /* ====== SERVICES ====== */
-.services { background: var(--black-soft); }
+.services {
+    background: #0A0A0A;
+}
+.services .section-title { color: #FFFFFF; }
+.services .section-desc { color: #A8A8A8; }
 .services-grid {
     max-width: 1280px;
     margin: 0 auto;
@@ -533,8 +642,8 @@ section { padding: 6rem 2rem; }
     gap: 1.5rem;
 }
 .service-card {
-    background: var(--black-card);
-    border: 1px solid rgba(255,255,255,0.06);
+    background: #171717;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
     padding: 2.5rem 2rem;
     position: relative;
@@ -542,23 +651,10 @@ section { padding: 6rem 2rem; }
     transition: all 0.4s ease;
     cursor: default;
 }
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--red), var(--red-light));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-}
-.service-card:hover::before { transform: scaleX(1); }
 .service-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(227, 24, 55, 0.2);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(227, 24, 55, 0.05);
+    border-color: rgba(227, 24, 55, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(227, 24, 55, 0.1);
 }
 .service-icon {
     width: 60px;
@@ -582,10 +678,11 @@ section { padding: 6rem 2rem; }
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.3rem;
     font-weight: 600;
+    color: #FFFFFF;
     margin-bottom: 0.8rem;
 }
 .service-card p {
-    color: var(--gray);
+    color: #A8A8A8;
     line-height: 1.7;
     font-size: 0.95rem;
 }
@@ -602,7 +699,7 @@ section { padding: 6rem 2rem; }
 }
 .service-card .card-link:hover {
     gap: 0.7rem;
-    color: var(--red-dark, #c41430) !important;
+    color: var(--red-light) !important;
 }
 .service-card .card-link i { font-size: 0.75rem; transition: transform 0.3s; }
 .service-card .card-link:hover i { transform: translateX(3px) !important; }
@@ -621,10 +718,299 @@ section { padding: 6rem 2rem; }
 }
 .service-card.animated:hover {
     transform: translateY(-8px) !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(227, 24, 55, 0.05) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(227, 24, 55, 0.1) !important;
 }
 @keyframes cardIn {
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== BORDER GLOW CARDS ====== */
+.border-glow-card {
+    --edge-proximity: 0;
+    --cursor-angle: 45deg;
+    --edge-sensitivity: 30;
+    --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+    --border-radius: 28px;
+    --glow-padding: 40px;
+    --cone-spread: 25;
+    --fill-opacity: 0.5;
+    --card-bg: #120F17;
+    --glow-color: hsl(40deg 80% 80% / 100%);
+    --glow-color-60: hsl(40deg 80% 80% / 60%);
+    --glow-color-50: hsl(40deg 80% 80% / 50%);
+    --glow-color-40: hsl(40deg 80% 80% / 40%);
+    --glow-color-30: hsl(40deg 80% 80% / 30%);
+    --glow-color-20: hsl(40deg 80% 80% / 20%);
+    --glow-color-10: hsl(40deg 80% 80% / 10%);
+    --gradient-one: radial-gradient(at 80% 55%, #c084fc 0px, transparent 50%);
+    --gradient-two: radial-gradient(at 69% 34%, #f472b6 0px, transparent 50%);
+    --gradient-three: radial-gradient(at 8% 6%, #38bdf8 0px, transparent 50%);
+    --gradient-four: radial-gradient(at 41% 38%, #c084fc 0px, transparent 50%);
+    --gradient-five: radial-gradient(at 86% 85%, #f472b6 0px, transparent 50%);
+    --gradient-six: radial-gradient(at 82% 18%, #38bdf8 0px, transparent 50%);
+    --gradient-seven: radial-gradient(at 51% 4%, #f472b6 0px, transparent 50%);
+    --gradient-base: linear-gradient(#c084fc 0 100%);
+
+    position: relative;
+    border-radius: var(--border-radius);
+    isolation: isolate;
+    transform: translate3d(0, 0, 0.01px);
+    display: grid;
+    border: 1px solid rgb(255 255 255 / 15%);
+    background: var(--card-bg, #120F17);
+    overflow: visible;
+    box-shadow:
+        rgba(0, 0, 0, 0.1) 0px 1px 2px,
+        rgba(0, 0, 0, 0.1) 0px 2px 4px,
+        rgba(0, 0, 0, 0.1) 0px 4px 8px,
+        rgba(0, 0, 0, 0.1) 0px 8px 16px,
+        rgba(0, 0, 0, 0.1) 0px 16px 32px,
+        rgba(0, 0, 0, 0.1) 0px 32px 64px;
+}
+.border-glow-card:hover { transform: translate3d(0, -8px, 0.01px); }
+
+.border-glow-card::before,
+.border-glow-card::after,
+.border-glow-card > .edge-light {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    transition: opacity 0.25s ease-out;
+    z-index: -1;
+}
+
+.border-glow-card:not(:hover):not(.sweep-active)::before,
+.border-glow-card:not(:hover):not(.sweep-active)::after,
+.border-glow-card:not(:hover):not(.sweep-active) > .edge-light {
+    opacity: 0;
+    transition: opacity 0.75s ease-in-out;
+}
+
+/* colored mesh-gradient border */
+.border-glow-card::before {
+    border: 1px solid transparent;
+    background:
+        linear-gradient(var(--card-bg, #120F17) 0 100%) padding-box,
+        linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
+        var(--gradient-one, radial-gradient(at 80% 55%, hsla(268, 100%, 76%, 1) 0px, transparent 50%)) border-box,
+        var(--gradient-two, radial-gradient(at 69% 34%, hsla(349, 100%, 74%, 1) 0px, transparent 50%)) border-box,
+        var(--gradient-three, radial-gradient(at 8% 6%, hsla(136, 100%, 78%, 1) 0px, transparent 50%)) border-box,
+        var(--gradient-four, radial-gradient(at 41% 38%, hsla(192, 100%, 64%, 1) 0px, transparent 50%)) border-box,
+        var(--gradient-five, radial-gradient(at 86% 85%, hsla(186, 100%, 74%, 1) 0px, transparent 50%)) border-box,
+        var(--gradient-six, radial-gradient(at 82% 18%, hsla(52, 100%, 65%, 1) 0px, transparent 50%)) border-box,
+        var(--gradient-seven, radial-gradient(at 51% 4%, hsla(12, 100%, 72%, 1) 0px, transparent 50%)) border-box,
+        var(--gradient-base, linear-gradient(#c299ff 0 100%)) border-box;
+
+    opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+
+    mask-image:
+        conic-gradient(
+            from var(--cursor-angle) at center,
+            black calc(var(--cone-spread) * 1%),
+            transparent calc((var(--cone-spread) + 15) * 1%),
+            transparent calc((100 - var(--cone-spread) - 15) * 1%),
+            black calc((100 - var(--cone-spread)) * 1%)
+        );
+}
+
+/* colored mesh-gradient background fill near edges */
+.border-glow-card::after {
+    border: 1px solid transparent;
+    background:
+        var(--gradient-one, radial-gradient(at 80% 55%, hsla(268, 100%, 76%, 1) 0px, transparent 50%)) padding-box,
+        var(--gradient-two, radial-gradient(at 69% 34%, hsla(349, 100%, 74%, 1) 0px, transparent 50%)) padding-box,
+        var(--gradient-three, radial-gradient(at 8% 6%, hsla(136, 100%, 78%, 1) 0px, transparent 50%)) padding-box,
+        var(--gradient-four, radial-gradient(at 41% 38%, hsla(192, 100%, 64%, 1) 0px, transparent 50%)) padding-box,
+        var(--gradient-five, radial-gradient(at 86% 85%, hsla(186, 100%, 74%, 1) 0px, transparent 50%)) padding-box,
+        var(--gradient-six, radial-gradient(at 82% 18%, hsla(52, 100%, 65%, 1) 0px, transparent 50%)) padding-box,
+        var(--gradient-seven, radial-gradient(at 51% 4%, hsla(12, 100%, 72%, 1) 0px, transparent 50%)) padding-box,
+        var(--gradient-base, linear-gradient(#c299ff 0 100%)) padding-box;
+
+    mask-image:
+        linear-gradient(to bottom, black, black),
+        radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+        radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+        radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+        radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+        radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+        conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+
+    mask-composite: subtract, add, add, add, add, add;
+    opacity: calc(var(--fill-opacity, 0.5) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+    mix-blend-mode: soft-light;
+}
+
+/* outer glow layer */
+.border-glow-card > .edge-light {
+    inset: calc(var(--glow-padding) * -1);
+    pointer-events: none;
+    z-index: 1;
+
+    mask-image:
+        conic-gradient(
+            from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%
+        );
+
+    opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
+    mix-blend-mode: plus-lighter;
+}
+
+.border-glow-card > .edge-light::before {
+    content: "";
+    position: absolute;
+    inset: var(--glow-padding);
+    border-radius: inherit;
+    box-shadow:
+        inset 0 0 0 1px var(--glow-color, hsl(40deg 80% 80% / 100%)),
+        inset 0 0 1px 0 var(--glow-color-60, hsl(40deg 80% 80% / 60%)),
+        inset 0 0 3px 0 var(--glow-color-50, hsl(40deg 80% 80% / 50%)),
+        inset 0 0 6px 0 var(--glow-color-40, hsl(40deg 80% 80% / 40%)),
+        inset 0 0 15px 0 var(--glow-color-30, hsl(40deg 80% 80% / 30%)),
+        inset 0 0 25px 2px var(--glow-color-20, hsl(40deg 80% 80% / 20%)),
+        inset 0 0 50px 2px var(--glow-color-10, hsl(40deg 80% 80% / 10%)),
+        0 0 1px 0 var(--glow-color-60, hsl(40deg 80% 80% / 60%)),
+        0 0 3px 0 var(--glow-color-50, hsl(40deg 80% 80% / 50%)),
+        0 0 6px 0 var(--glow-color-40, hsl(40deg 80% 80% / 40%)),
+        0 0 15px 0 var(--glow-color-30, hsl(40deg 80% 80% / 30%)),
+        0 0 25px 2px var(--glow-color-20, hsl(40deg 80% 80% / 20%)),
+        0 0 50px 2px var(--glow-color-10, hsl(40deg 80% 80% / 10%));
+}
+
+.border-glow-inner {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: auto;
+    z-index: 1;
+}
+
+/* ====== FAQ ====== */
+.faq-list {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+.faq-item {
+    position: relative;
+    background: var(--black-card);
+    border: 1px solid rgba(227, 24, 55, 0.14);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(10, 10, 10, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.faq-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--red-light), var(--red-dark));
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.35s ease;
+    z-index: 1;
+}
+.faq-item:hover::before,
+.faq-item[open]::before {
+    transform: scaleY(1);
+}
+.faq-item:hover {
+    border-color: rgba(227, 24, 55, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(10, 10, 10, 0.08);
+}
+.faq-item[open] {
+    border-color: rgba(227, 24, 55, 0.35);
+    box-shadow: 0 16px 40px rgba(227, 24, 55, 0.10);
+}
+.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.4rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--white);
+    user-select: none;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: -3px;
+    border-radius: 18px;
+}
+.faq-item summary::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: '\f059';
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(227, 24, 55, 0.10);
+    color: var(--red);
+    font-size: 1rem;
+    border-radius: 12px;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.faq-item summary:hover::before {
+    transform: scale(1.06) rotate(-8deg);
+}
+.faq-item[open] summary::before {
+    background: var(--red);
+    color: #fff;
+}
+.faq-q-text {
+    flex: 1;
+    line-height: 1.45;
+}
+.faq-item summary::after {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: '\f078';
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--red);
+    font-size: 0.8rem;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+.faq-item[open] summary::after {
+    transform: rotate(180deg);
+    background: var(--red);
+    color: #fff;
+}
+.faq-answer {
+    padding: 0 1.6rem 1.5rem 3.6rem;
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.75;
+}
+.faq-item[open] .faq-answer {
+    animation: faqAnswerIn 0.4s ease both;
+}
+@keyframes faqAnswerIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 640px) {
+    .faq-answer { padding-left: 1.4rem; }
+    .faq-item summary { gap: 0.75rem; padding: 1.1rem 1rem; }
+    .faq-item summary::before { width: 38px; height: 38px; }
 }
 
 /* ====== PORTFOLIO ====== */
@@ -1187,6 +1573,16 @@ footer {
         max-width: 380px;
     }
 
+    .card-swap-container {
+        width: 420px;
+        height: 360px;
+    }
+
+    .card-swap-card {
+        width: 300px;
+        min-height: 195px;
+    }
+
     .hero-stats {
         gap: 1.5rem;
         flex-wrap: wrap;
@@ -1271,6 +1667,31 @@ footer {
     .hero-stats {
         flex-direction: column;
         gap: 1rem;
+    }
+
+    .card-swap-container {
+        width: 340px;
+        height: 320px;
+    }
+
+    .card-swap-card {
+        width: 260px;
+        min-height: 185px;
+        padding: 1.3rem 1.4rem;
+    }
+
+    .card-ico {
+        width: 40px;
+        height: 40px;
+        font-size: 1.05rem;
+    }
+
+    .card-swap-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .card-swap-card p {
+        font-size: 0.78rem;
     }
 }
 

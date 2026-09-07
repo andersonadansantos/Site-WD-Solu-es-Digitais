@@ -5,6 +5,101 @@ window.addEventListener('load', () => {
     }, 800);
 });
 
+// ====== CARD SWAP (HERO) ======
+(function() {
+    const container = document.getElementById('cardSwap');
+    if (!container || typeof gsap === 'undefined') return;
+
+    const cards = Array.prototype.slice.call(container.children);
+
+    const CARD_DIST = 60;
+    const VERT_DIST = 70;
+    const DELAY = 5000;
+    const SKEW = 6;
+    const config = {
+        ease: 'elastic.out(0.6,0.9)',
+        durDrop: 2,
+        durMove: 2,
+        durReturn: 2,
+        promoteOverlap: 0.9,
+        returnDelay: 0.05
+    };
+
+    const makeSlot = (i, total) => ({
+        x: i * CARD_DIST,
+        y: -i * VERT_DIST,
+        z: -i * CARD_DIST * 1.5,
+        zIndex: total - i
+    });
+
+    const placeNow = (el, slot, skew) => gsap.set(el, {
+        x: slot.x,
+        y: slot.y,
+        z: slot.z,
+        xPercent: -50,
+        yPercent: -50,
+        skewY: skew,
+        transformOrigin: 'center center',
+        zIndex: slot.zIndex,
+        force3D: true
+    });
+
+    const total = cards.length;
+    cards.forEach((el, i) => placeNow(el, makeSlot(i, total), SKEW));
+
+    let order = cards.map((_, i) => i);
+    let tlRef = null;
+
+    const swap = () => {
+        if (order.length < 2) return;
+
+        const [front, ...rest] = order;
+        const elFront = cards[front];
+        const tl = gsap.timeline();
+        tlRef = tl;
+
+        tl.to(elFront, {
+            y: '+=500',
+            duration: config.durDrop,
+            ease: config.ease
+        });
+
+        tl.addLabel('promote', '-=' + (config.durDrop * config.promoteOverlap));
+        rest.forEach((idx, i) => {
+            const el = cards[idx];
+            const slot = makeSlot(i, total);
+            tl.set(el, { zIndex: slot.zIndex }, 'promote');
+            tl.to(el, {
+                x: slot.x,
+                y: slot.y,
+                z: slot.z,
+                duration: config.durMove,
+                ease: config.ease
+            }, 'promote+=' + (i * 0.15));
+        });
+
+        const backSlot = makeSlot(total - 1, total);
+        tl.addLabel('return', 'promote+=' + (config.durMove * config.returnDelay));
+        tl.call(function() {
+            gsap.set(elFront, { zIndex: backSlot.zIndex });
+        }, undefined, 'return');
+        tl.to(elFront, {
+            x: backSlot.x,
+            y: backSlot.y,
+            z: backSlot.z,
+            duration: config.durReturn,
+            ease: config.ease
+        }, 'return');
+
+        tl.call(function() {
+            order = rest.concat(front);
+        });
+    };
+
+    swap();
+    window.setInterval(swap, DELAY);
+})();
+
 // ====== TYPEWRITER LOOP ======
 (function() {
     const el = document.querySelector('.typewriter-text');
@@ -129,6 +224,45 @@ const cardObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.service-card').forEach(card => cardObserver.observe(card));
+
+// ====== BORDER GLOW (SERVICE CARDS) ======
+(function() {
+    function getEdgeProximity(el, x, y) {
+        const rect = el.getBoundingClientRect();
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const dx = x - cx;
+        const dy = y - cy;
+        let kx = Infinity;
+        let ky = Infinity;
+        if (dx !== 0) kx = cx / Math.abs(dx);
+        if (dy !== 0) ky = cy / Math.abs(dy);
+        return Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+    }
+    function getCursorAngle(el, x, y) {
+        const rect = el.getBoundingClientRect();
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const dx = x - cx;
+        const dy = y - cy;
+        if (dx === 0 && dy === 0) return 0;
+        const radians = Math.atan2(dy, dx);
+        let degrees = radians * (180 / Math.PI) + 90;
+        if (degrees < 0) degrees += 360;
+        return degrees;
+    }
+    document.querySelectorAll('.border-glow-card').forEach((card) => {
+        card.addEventListener('pointermove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const edge = getEdgeProximity(card, x, y);
+            const angle = getCursorAngle(card, x, y);
+            card.style.setProperty('--edge-proximity', (edge * 100).toFixed(3));
+            card.style.setProperty('--cursor-angle', angle.toFixed(3) + 'deg');
+        });
+    });
+})();
 
 // Portfolio staggered animation
 const portfolioObserver = new IntersectionObserver((entries) => {
