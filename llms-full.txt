@@ -1,6 +1,6 @@
 # WD Soluções Digitais — Conteúdo completo
 
-> WD Soluções Digitais é uma agência de marketing digital em Belém-PA que ajuda empresas a crescer com estratégia, automação e performance: gestão de mídias sociais, Google Ads, automações, desenvolvimento de sites, design gráfico e gestão de cobranças.
+> WD Soluções Digitais é uma agência de marketing digital em Belém-PA que ajuda empresas a crescer com estratégia, automação e performance: Google Ads, automações, desenvolvimento de sites, design gráfico e gestão de cobranças.
 
 ## Sobre a empresa
 
@@ -11,15 +11,10 @@ A agência combina planejamento estratégico, produção de conteúdo, mídia pa
 **Diferenciais:**
 - Atendimento próximo e consultivo, focado no resultado do cliente.
 - Soluções integradas de marketing, design e tecnologia em um só lugar.
-- Equipe especializada em mídia paga, redes sociais, automação e desenvolvimento.
+- Equipe especializada em mídia paga, automação e desenvolvimento.
 - Relatórios e acompanhamento de métricas para medir o retorno do investimento.
 
 ## Serviços
-
-### Gestão de Mídias Sociais
-Página: https://agenciawd.com.br/gestao-de-midias-sociais.html
-
-Cuidamos das redes sociais da sua empresa com estratégia, conteúdo e interação. Inclui planejamento estratégico, calendário de publicações, criação de conteúdo, interação com o público e relatórios de métricas. O objetivo é fortalecer a marca e atrair mais clientes com presença digital consistente.
 
 ### Google Ads
 Página: https://agenciawd.com.br/google-ads.html
@@ -54,13 +49,13 @@ Automatize suas cobranças por WhatsApp e e-mail com um sistema inteligente de g
 ## Perguntas frequentes (FAQ)
 
 **O que é a WD Soluções Digitais?**
-A WD Soluções Digitais é uma agência de marketing digital em Belém-PA que oferece um ecossistema digital completo: gestão de mídias sociais, Google Ads, automações, desenvolvimento de sites, design gráfico e gestão de cobranças.
+A WD Soluções Digitais é uma agência de marketing digital em Belém-PA que oferece um ecossistema digital completo: Google Ads, automações, desenvolvimento de sites, design gráfico e gestão de cobranças.
 
 **Onde a WD está localizada?**
-Na Av. Generalíssimo Deodoro, 1893 - Nazaré, Belém - PA, CEP 66035-100. O atendimento é presencial em Belém e 100% online para todo o Brasil.
+Na Rua 15 de Novembro, 226 - Edifício Chamie, Sala 1407 - Campina, Belém - PA, CEP 66013-060. O atendimento é presencial em Belém e 100% online para todo o Brasil.
 
 **Quais serviços a WD oferece?**
-Gestão de mídias sociais, Google Ads (tráfego pago), email corporativo, automações de processos, desenvolvimento de sites, design gráfico e gestão de cobranças automatizada.
+Google Ads (tráfego pago), email corporativo, automações de processos, desenvolvimento de sites, design gráfico e gestão de cobranças automatizada.
 
 **A WD atende empresas de outras cidades?**
 Sim. Todos os serviços são entregues online e atendem empresas de qualquer cidade do Brasil.
@@ -81,7 +76,7 @@ Pelo WhatsApp (91) 98267-5573, e-mail contato@agenciawd.com.br ou pelo formulár
 
 - WhatsApp: https://wa.me/5591982675573
 - E-mail: contato@agenciawd.com.br
-- Endereço: Av. Generalíssimo Deodoro, 1893 - Nazaré, Belém - PA, CEP 66035-100
+- Endereço: Rua 15 de Novembro, 226 - Edifício Chamie, Sala 1407 - Campina, Belém - PA, CEP 66013-060
 - Site: https://agenciawd.com.br
 - Instagram: https://www.instagram.com/wdcomunicacao7/
 - Facebook: https://www.facebook.com/wdcomunicacao7
